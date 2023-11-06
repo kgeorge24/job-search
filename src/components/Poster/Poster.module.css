@@ -1,4 +1,7 @@
+.poster {
+}
+
 .poster > img {
-    object-fit: contain;
+    display: block;
     width: 100%;
 }

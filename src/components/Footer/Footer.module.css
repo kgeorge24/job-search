@@ -1,0 +1,29 @@
+.footer {
+    color: #4D8FBE;
+    background-color: #EAE9E9;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.footer > ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.footer > ul > li {
+    margin: 0px 5px 10px 0px;
+    flex-shrink: 0;
+}
+
+.footer > ul > li > a {
+    text-decoration: none;
+    color: #4D8FBE;
+}
+
+.footer p {
+    font-size: 12px;
+}
