@@ -1,0 +1,41 @@
+.search {
+    display: flex;
+    flex-direction: column;
+}
+
+.search > div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.search > div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50px;
+    position: fixed;
+    left: 14%;
+}
+
+.search > div > div img {
+    object-fit: contain;
+    width: 20px;
+}
+
+.search > div input {
+    border: 1px solid #C6C6C6;
+    border-radius: 10px;
+    text-align: center;
+    height: 50px;
+    width: 80%;
+}
+
+.search > div > button {
+    background-color: #4D8FBE;
+    border: none;
+    width: 177px;
+    height: 50px;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+}
