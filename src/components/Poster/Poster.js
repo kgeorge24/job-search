@@ -5,7 +5,9 @@ import styles from "./Poster.module.css";
 const Poster = () => {
   return (
     <div className={styles.poster}>
-      <img src={poster} alt="" />
+      <a href="#">
+        <img src={poster} alt="" />
+      </a>
     </div>
   );
 };
