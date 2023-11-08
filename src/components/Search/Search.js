@@ -10,13 +10,13 @@ const Search = () => {
         <div>
           <img src={search} alt="" />
         </div>
-        <input type="text" placeholder="Search job title or keyword"></input>
+        <input type="search" placeholder="Search job title or keyword"></input>
       </div>
       <div>
         <div>
           <img src={location} alt="" />
         </div>
-        <input type="text" placeholder="City, state or postal code" />
+        <input type="search" placeholder="City, state or postal code" />
       </div>
       <div>
         <button>Search Jobs</button>

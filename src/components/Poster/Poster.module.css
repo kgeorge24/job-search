@@ -1,7 +1,9 @@
-.poster {
+.poster > button{
+
 }
 
-.poster > img {
+.poster > a > img {
     display: block;
+    border-radius: 0px;
     width: 100%;
 }
