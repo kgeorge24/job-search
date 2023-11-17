@@ -9,9 +9,7 @@ const LandingPage = () => {
   return (
     <Fragment>
       <Header />
-      <SearchContextProvider>
-        <Search />
-      </SearchContextProvider>
+      <Search />
       <Poster />
       <Footer />
     </Fragment>
