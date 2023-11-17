@@ -1,8 +1,16 @@
+button {
+    border: none;
+    background-color: transparent;
+}
+
 .jobitem {
     background-color: #F8F8F8;
     border-radius: 10px;
-    min-width: 350px;
+    min-width: 370px;
+    max-width: 370px;
     padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 5px rgba(195, 195, 195, 0.552);
 }
 
 .blue {
@@ -13,18 +21,19 @@
     margin-bottom: 2px;
 }
 
-.jobitem img {
-    width: 15px;
-    margin-top: 2px;
+.jobitem > .jobitem-header > div img{
+    width: 40px;
 }
 
-.jobitem-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
+.jobitem-header > div  {
+   display: flex;
+   flex-direction: column;
+   text-align: left;
+   margin-bottom: 30px;
 }
 
 .jobitem-attributes {
+    text-align: left;
     margin-bottom: 10px;
 }
 

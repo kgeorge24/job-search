@@ -1,20 +1,17 @@
-import { useContext } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage/LandingPage";
-import { SearchContext } from "./components/store/search-context";
-import "./App.css";
 import ResultsPage from "./components/ResultsPage/ResultsPage";
+import "./App.css";
 
 function App() {
-  const searchCtx = useContext(SearchContext);
-  console.log(searchCtx.results);
-  const returnPages = () => {
-    if (searchCtx.results.length > 0) {
-      return <ResultsPage />;
-    } else {
-      return <LandingPage />;
-    }
-  };
-  return <div>{returnPages()}</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<LandingPage />} />
+        <Route path="/results/:slug/:page" element={<ResultsPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
