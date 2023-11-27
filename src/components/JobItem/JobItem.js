@@ -1,9 +1,5 @@
 import styles from "./JobItem.module.css";
-import bookmark from "../../assets/bookmark-white.png";
-import selectedBookmark from "../../assets/bookmark.png";
 import nologo from "../../assets/nologo.webp";
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
 
 const JobItems = (props) => {
   const { job } = props;
@@ -28,8 +24,9 @@ const JobItems = (props) => {
     console.log("Opening job desc!", "Here is the job obj: ", job);
   };
 
+  console.log(job.description)
   return (
-    <button onClick={openJobDescription}>
+    <button className={styles.button} onClick={openJobDescription}>
       <div className={styles.jobitem}>
         <div className={styles["jobitem-header"]}>
           <div>

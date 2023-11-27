@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import JobItem from "../JobItem/JobItem";
 import styles from "./JobList.module.css";
+import Filter from "../Filter/Filter";
+import spinner from "../../assets/spinner-2.gif";
 
 const JobList = () => {
   const [resultsState, setResultsState] = useState({});
@@ -28,6 +30,9 @@ const JobList = () => {
       return resultsState.jobs_results.map((result) => {
         return <JobItem job={result} key={result.job_id} />;
       });
+    } else {
+      console.log("loading");
+      return <img src={spinner} alt="" />;
     }
   };
 
@@ -37,9 +42,10 @@ const JobList = () => {
     const newPath = pathArray.join("/");
     window.location.pathname = newPath;
   };
-
+  console.log(resultsState);
   return (
     <div className={styles.joblist}>
+      <Filter jobs={resultsState} />
       {returnJobItems()}
       <button className={styles.seemore} onClick={navigation}>
         See More

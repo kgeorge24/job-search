@@ -1,0 +1,29 @@
+.filter {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0px 20px;
+    border-bottom: 2px solid rgb(214, 214, 214);
+    margin-bottom: 20px;
+}
+
+.filter > button {
+    text-decoration: none;
+    color: #4D8FBE;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+}
+
+.modal {
+    position: fixed;
+    top: 60px;
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    /* border: 2px solid black; */
+}
+
+.hide {
+    display: none;
+}
