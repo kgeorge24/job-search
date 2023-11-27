@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { SearchContext } from "./components/store/search-context";
 import SearchContextProvider from "./components/store/search-context";
 import "./index.css";
 import App from "./App";
