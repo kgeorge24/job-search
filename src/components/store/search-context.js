@@ -3,7 +3,6 @@ import React, { createContext, useState } from "react";
 export const SearchContext = createContext({
   jobTitle: "",
   location: "",
-  results: [],
   jobTitleHandler: () => {},
   locationHandler: () => {},
 });
@@ -11,7 +10,6 @@ export const SearchContext = createContext({
 const SearchContextProvider = (props) => {
   const [jobTitleState, setJobTitleState] = useState("");
   const [locationState, setLocationState] = useState("");
-  const [resultsState, setResultsState] = useState({});
 
   const jobTitleHandler = (e) => {
     setJobTitleState(e.target.value);
@@ -26,7 +24,6 @@ const SearchContextProvider = (props) => {
       value={{
         jobTitle: jobTitleState,
         location: locationState,
-        results: resultsState,
         jobTitleHandler: jobTitleHandler,
         locationHandler: locationHandler,
       }}
