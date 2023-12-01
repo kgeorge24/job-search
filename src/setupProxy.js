@@ -8,4 +8,12 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
+
+  app.use(
+    "/job-search", // specify the API route you want to proxy
+    createProxyMiddleware({
+      target: "http://localhost:5000", // specify the address of your Node.js server
+      changeOrigin: true,
+    })
+  );
 };

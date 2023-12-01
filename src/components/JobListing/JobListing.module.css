@@ -1,0 +1,135 @@
+.joblisting {
+
+}
+
+.joblisting > .close {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.joblisting > .close > button {
+    border: none;
+    width: 80px;
+    height: 30px;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.joblisting > .header {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding: 15px;
+ background-color: #F8F8F8;
+ border-radius: 10px;
+ text-align: center;
+}
+
+.joblisting > .header img {
+    width: 50px;
+}
+
+.joblisting > .header > div {
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.joblisting > .header > div > a, .joblisting > .header > div > button {
+    border: none;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.joblisting > .header > div > button:first-of-type {
+    background-color: #4D8FBE;
+    color: white;
+}
+
+.joblisting > .header > div > button {
+    background-color: white;
+    color: #4D8FBE;
+    border: 2px solid #4D8FBE;
+}
+
+.description {
+    background-color: #F8F8F8;
+    border-radius: 10px 10px 0px 0px;
+    padding: 15px;
+    height: auto;
+    overflow: hidden;
+    max-height: 15000px;
+    white-space: pre-line;
+    transition: 2s ease-in-out;
+    margin-top: 15px;
+    
+}
+
+.hide {
+    max-height: 300px;
+    overflow: hidden;
+    transition: .1s ease-in-out;
+}
+
+.description > h4 {
+    line-height: 30px;
+    border-bottom: 1px solid rgb(202, 202, 202);
+    margin-bottom: 5px;
+}
+
+.toggle > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.toggle > button > img {
+    width: 20px;
+    margin-left: 10px;
+}
+
+.toggle {
+    padding-top: 30px;
+    background-color: #F8F8F8;
+    padding: 10px 0px;
+    border-radius: 0px 0px 10px 10px;
+    margin-bottom: 60px;
+}
+
+.blue {
+    color: #4D8FBE;
+}
+
+.modal {
+    /* border: 2px solid black; */
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal li {
+    background-color: #4D8FBE;
+    box-shadow: 1px 1px 3px rgb(143, 142, 142);
+    width: 70%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.modal li a {
+    text-decoration: none;
+    color: white;
+}

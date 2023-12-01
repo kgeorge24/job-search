@@ -6,19 +6,19 @@ const Footer = () => {
     <div className={styles.footer}>
       <ul>
         <li>
-          <a href="#">Privacy</a>
+          <a href="privacy">Privacy</a>
         </li>
         <li>
-          <a href="#">Cookie Policy</a>
+          <a href="cookiepolicy">Cookie Policy</a>
         </li>
         <li>
-          <a href="#">Terms of use</a>
+          <a href="termsofuse">Terms of use</a>
         </li>
         <li>
-          <a href="#">Careers</a>
+          <a href="careers">Careers</a>
         </li>
         <li>
-          <a href="#">Job Posting Rules</a>
+          <a href="rules">Job Posting Rules</a>
         </li>
       </ul>
       <p>FindJobs, Inc © 2023 All Rights Reserved</p>

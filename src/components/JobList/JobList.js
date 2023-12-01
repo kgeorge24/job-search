@@ -5,7 +5,7 @@ import styles from "./JobList.module.css";
 import Filter from "../Filter/Filter";
 import spinner from "../../assets/spinner-2.gif";
 
-const JobList = () => {
+const JobList = (props) => {
   const [resultsState, setResultsState] = useState({});
   const { slug } = useParams();
   const { page } = useParams();
@@ -26,12 +26,17 @@ const JobList = () => {
   }, [slug, page]);
 
   const returnJobItems = () => {
-    if (JSON.stringify(resultsState) != "{}") {
+    if (JSON.stringify(resultsState) !== "{}") {
       return resultsState.jobs_results.map((result) => {
-        return <JobItem job={result} key={result.job_id} />;
+        return (
+          <JobItem
+            job={result}
+            key={result.job_id}
+            openJobDescription={props.openJobDescription}
+          />
+        );
       });
     } else {
-      console.log("loading");
       return <img src={spinner} alt="" />;
     }
   };

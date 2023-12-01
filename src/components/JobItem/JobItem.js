@@ -5,28 +5,20 @@ const JobItems = (props) => {
   const { job } = props;
 
   const renderImg = () => {
-    if (!job.thumbnail) {
-      return nologo;
-    } else {
-      return job.thumbnail;
-    }
+    return !job.thumbnail ? nologo : job.thumbnail;
   };
 
   const renderSalary = () => {
-    if (!job.detected_extensions.salary) {
-      return "Not disclosed.";
-    } else {
-      return job.detected_extensions.salary;
-    }
+    return !job.detected_extensions.salary
+      ? "Not disclosed"
+      : job.detected_extensions.salary;
   };
 
-  const openJobDescription = () => {
-    console.log("Opening job desc!", "Here is the job obj: ", job);
-  };
-
-  console.log(job.description)
   return (
-    <button className={styles.button} onClick={openJobDescription}>
+    <button
+      className={styles.button}
+      onClick={() => props.openJobDescription(job)}
+    >
       <div className={styles.jobitem}>
         <div className={styles["jobitem-header"]}>
           <div>
