@@ -1,0 +1,25 @@
+.filter-item {
+    margin-bottom: 20px;
+}
+
+.filter-item:first-of-type {
+    margin-top: 40px;
+    /* border: 2px solid black; */
+}
+
+.filter-item ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+
+.filter-item li {
+    margin: 3px;
+}
+
+.filter-item button {
+    border: 2px solid #4D8FBE;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: transparent;
+}
