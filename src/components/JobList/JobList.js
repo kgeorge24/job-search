@@ -7,8 +7,10 @@ import spinner from "../../assets/spinner-2.gif";
 
 const JobList = (props) => {
   const [resultsState, setResultsState] = useState({});
+  const [toggleState, setToggleState] = useState(false);
   const { slug } = useParams();
   const { page } = useParams();
+  const { chips } = useParams();
 
   const fetchFromAPI = async (query) => {
     const response = await fetch(`/keyword-search/${query}`);
@@ -19,14 +21,15 @@ const JobList = (props) => {
   useEffect(() => {
     if (slug) {
       if (slug.length > 4) {
-        let search = `${slug}/${page}`;
+        let search = `${slug}/${page}/${chips}`;
         fetchFromAPI(search);
       }
     }
-  }, [slug, page]);
+  }, [slug, page, chips]);
 
   const returnJobItems = () => {
-    if (JSON.stringify(resultsState) !== "{}") {
+    // debugger;
+    if (JSON.stringify(resultsState) !== "{}" && resultsState.jobs_results) {
       return resultsState.jobs_results.map((result) => {
         return (
           <JobItem
@@ -47,10 +50,18 @@ const JobList = (props) => {
     const newPath = pathArray.join("/");
     window.location.pathname = newPath;
   };
-  console.log(resultsState);
+
+  const clickHandler = () => {
+    toggleState === false ? setToggleState(true) : setToggleState(false);
+  };
+
   return (
     <div className={styles.joblist}>
-      <Filter jobs={resultsState} />
+      <Filter
+        chips={resultsState.chips}
+        clickHandler={clickHandler}
+        toggleState={toggleState}
+      />
       {returnJobItems()}
       <button className={styles.seemore} onClick={navigation}>
         See More

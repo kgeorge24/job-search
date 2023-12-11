@@ -35,7 +35,7 @@ const Search = () => {
         />
       </div>
       <div>
-        <Link to={`/results/${searchCtx.jobTitle}${searchCtx.location}/0`}>
+        <Link to={`/results/${searchCtx.jobTitle}${searchCtx.location}/0/:`}>
           Search Jobs
         </Link>
       </div>
