@@ -5,7 +5,7 @@ import FilterItem from "../FilterItem/FilterItem";
 
 const Filter = (props) => {
   const [selectedChips, setSelectedChips] = useState([]);
-  const { chips } = useParams();
+  const { chips, page, slug } = useParams();
 
   const pageHandler = () => {
     const page = window.location.pathname.split("/");
@@ -24,7 +24,7 @@ const Filter = (props) => {
   };
 
   const renderFilters = () => {
-    if (props.chips) {
+    if (JSON.stringify(props.chips) !== "{}") {
       return props.chips.map((chip) => {
         return (
           <FilterItem
@@ -44,13 +44,12 @@ const Filter = (props) => {
 
     if (selectedChips.length > 0) {
       selectedChips.map((chip) => {
-        return chipsString += `${chip},`;
+        return (chipsString += `${chip},`);
       });
       path[1] = chipsString;
       path = path[0] + path[1];
       window.location.pathname = path;
     } else {
-      console.log(chipsString);
       path[1] = ":";
       path = path[0] + path[1];
       window.location.pathname = path;
@@ -58,19 +57,13 @@ const Filter = (props) => {
   };
 
   const clearFilter = () => {
-    console.log(window.location.pathname.split("/"));
-    let pathArray = window.location.pathname.split("/");
+    let pathArray = window.location.pathname.split(`/${page}/`);
     let newPath = "";
-    pathArray.shift();
     pathArray.pop();
-    pathArray.map((path) => {
-      newPath += `/${path}`;
-    });
-
-    window.location.pathname = newPath + "/:";
+    newPath = pathArray[0] + `/${page}/` + ":";
+    window.location.pathname = newPath;
   };
 
-  console.log(selectedChips)
   return (
     <Fragment>
       <div className={styles.filter}>

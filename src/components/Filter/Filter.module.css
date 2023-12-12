@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 0px 20px;
+    padding: 5px 20px;
     border-bottom: 2px solid rgb(214, 214, 214);
     margin-bottom: 20px;
 }
@@ -10,9 +10,12 @@
 .filter > button {
     text-decoration: none;
     color: #4D8FBE;
-    font-size: 16px;
     background-color: transparent;
     border: none;
+}
+
+.filter > button, .filter > p {
+    font-size: 18px;
 }
 
 .modal {
@@ -35,7 +38,7 @@
 }
 
 .modal > div {
-    
+    display: flex;
 }
 
 .modal > div > button {
@@ -43,8 +46,8 @@
     background-color: #4D8FBE;
     color: white;
     border-radius: 10px;
-    height: 40px;
-    width: 100px;
+    height: 60px;
+    padding: 10px;
     margin: 5px;
 }
 
