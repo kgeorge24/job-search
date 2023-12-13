@@ -7,7 +7,9 @@ const Header = () => {
     <nav className={styles.header}>
       <ul>
         <li>
-          <img src={logo} alt="" />
+          <a href="/">
+            <img src={logo} alt="" />
+          </a>
         </li>
         <li>Sign In</li>
       </ul>

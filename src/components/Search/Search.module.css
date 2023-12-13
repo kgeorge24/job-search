@@ -55,6 +55,5 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 ::placeholder {
-    color: black;
-    font-size: 12px;
+    color: rgb(157, 157, 157);
 }
