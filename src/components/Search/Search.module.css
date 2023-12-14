@@ -57,3 +57,40 @@ input[type="search"]::-webkit-search-results-decoration {
 ::placeholder {
     color: rgb(157, 157, 157);
 }
+
+@media only screen and (min-width: 1000px) { 
+    .search {
+        flex-direction: row;
+        align-items: center;
+        justify-content:center;
+        width: 100%;
+        margin-top: 10px;
+        height: 100px;
+    }
+
+    .search > div {
+        width: 33%;
+        /* border: 2px solid black; */
+        margin-bottom: 0;
+        margin: 0px 10px;
+    }
+
+    .search > div:last-of-type {
+        /* border: 2px solid black; */
+        width: 10%;
+    }
+
+    .search > div input {
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .search > div:first-of-type > div {
+        left: 11.5%;
+    }
+
+    .search > div:nth-child(2) > div {
+        left: 45.8%;
+    }
+}
+    
