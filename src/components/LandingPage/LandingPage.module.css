@@ -1,0 +1,25 @@
+.landing-page {
+
+}
+
+
+@media only screen and (min-width: 1000px) {
+    .landing-page {
+        /* border: 2px solid black; */
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow: scroll;
+    }
+
+    .poster-section {
+        display: flex;
+        align-items: center;
+        /* border: 2px solid black; */
+        height: 73%;
+    }
+
+    .footer {
+    margin-top: auto;
+    }
+}
