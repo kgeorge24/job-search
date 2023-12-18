@@ -34,7 +34,7 @@ const JobList = (props) => {
     const pathArray = window.location.pathname.split("/");
 
     let newChips = [];
-    return pathArray.map((path) => {
+     pathArray.forEach((path) => {
       if (pathArray.indexOf(path) > 3) {
         newChips.push(path);
       }

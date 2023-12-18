@@ -3,7 +3,7 @@ import styles from "./FilterItem.module.css";
 
 const FilterItem = (props) => {
   const renderOptions = () => {
-    return props.chip.options.map((option) => {
+    return props.chip.options.forEach((option) => {
       if (!option.text.includes("{")) {
         return (
           <Option
@@ -15,7 +15,6 @@ const FilterItem = (props) => {
           />
         );
       }
-      return;
     });
   };
 
