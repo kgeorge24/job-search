@@ -60,7 +60,7 @@ const Filter = (props) => {
     let pathArray = window.location.pathname.split(`/${page}/`);
     let newPath = "";
     pathArray.pop();
-    newPath = `${pathArray[0]}` + `/${page}/` + ":";
+    newPath = `${pathArray[0]}/${page}/:`;
     window.location.pathname = newPath;
   };
 

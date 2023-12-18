@@ -2,7 +2,7 @@ import styles from "./JobListing.module.css";
 import nologo from "../../assets/nologo.webp";
 import downArrow from "../../assets/download.png";
 import upArrow from "../../assets/upload.png";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const JobListing = (props) => {
   const [toggleState, setToggleState] = useState(false);
@@ -10,7 +10,6 @@ const JobListing = (props) => {
   const [seeMoreTextState, setSeeMoreTextState] = useState("See More");
   const [seeMoreImage, setSeeMoreImage] = useState(downArrow);
   const [resultsState, setResultsState] = useState({});
-  const [windowWidthState, setWindowWidthState] = useState("");
   let job = "";
   if (JSON.stringify(props.job) === "{}" && window.innerWidth > 1000) {
     job = props.firstJob;
