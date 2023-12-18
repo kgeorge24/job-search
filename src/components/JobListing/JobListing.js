@@ -2,7 +2,7 @@ import styles from "./JobListing.module.css";
 import nologo from "../../assets/nologo.webp";
 import downArrow from "../../assets/download.png";
 import upArrow from "../../assets/upload.png";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const JobListing = (props) => {
   const [toggleState, setToggleState] = useState(false);
@@ -10,17 +10,24 @@ const JobListing = (props) => {
   const [seeMoreTextState, setSeeMoreTextState] = useState("See More");
   const [seeMoreImage, setSeeMoreImage] = useState(downArrow);
   const [resultsState, setResultsState] = useState({});
-  const job = props.job;
-
+  const [windowWidthState, setWindowWidthState] = useState("");
+  let job = "";
+  if (JSON.stringify(props.job) === "{}" && window.innerWidth > 1000) {
+    job = props.firstJob;
+  } else {
+    job = props.job;
+  }
+  // debugger
   useEffect(() => {
     if (job.job_id) {
       fetchFromAPI(encodeURIComponent(job.job_id));
     }
-  }, []);
+  }, [job.job_id]);
 
   const fetchFromAPI = async (query) => {
     const response = await fetch(`/job-search/${query}`);
     const data = await response.json();
+    console.log(data);
     setResultsState(data);
   };
 
@@ -50,14 +57,14 @@ const JobListing = (props) => {
         return resultsState.apply_options.map((apply) => {
           return (
             <li key={apply.link}>
-              <a href={apply.link} target="_blank">
+              <a href={apply.link} target="_blank" rel="noreferrer">
                 {apply.title}
               </a>
             </li>
           );
         });
-      }else{
-        console.log("No apply options", resultsState)
+      } else {
+        console.log("No apply options", resultsState);
       }
     };
 

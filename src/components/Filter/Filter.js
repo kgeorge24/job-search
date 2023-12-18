@@ -5,7 +5,7 @@ import FilterItem from "../FilterItem/FilterItem";
 
 const Filter = (props) => {
   const [selectedChips, setSelectedChips] = useState([]);
-  const { chips, page, slug } = useParams();
+  const { chips, page } = useParams();
 
   const pageHandler = () => {
     const page = window.location.pathname.split("/");
@@ -60,7 +60,7 @@ const Filter = (props) => {
     let pathArray = window.location.pathname.split(`/${page}/`);
     let newPath = "";
     pathArray.pop();
-    newPath = pathArray[0] + `/${page}/` + ":";
+    newPath = `${pathArray[0]}` + `/${page}/` + ":";
     window.location.pathname = newPath;
   };
 

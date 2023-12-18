@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Option from "../Option/Option";
 import styles from "./FilterItem.module.css";
 
@@ -16,6 +15,7 @@ const FilterItem = (props) => {
           />
         );
       }
+      return;
     });
   };
 

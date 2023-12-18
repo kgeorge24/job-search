@@ -43,13 +43,13 @@ const Login = () => {
             onChange={changeHandler}
           />
           <div>
-            <a href="">Forgot password?</a>
+            <a href="forgot-password">Forgot password?</a>
           </div>
         </div>
         <div className={styles.submit}>
           <input type="submit" value="Login" />
           <p>
-            Dont have an account? <a href="">Sign Up</a>
+            Dont have an account? <a href="sign-up">Sign Up</a>
           </p>
         </div>
       </div>
