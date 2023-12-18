@@ -10,7 +10,9 @@ const ResultsPage = () => {
 
   const openJobDescription = (job) => {
     toggleState === false ? setToggleState(true) : setToggleState(false);
-    window.scrollTo(0, 0);
+    if (window.innerWidth < 1000) {
+      window.scrollTo(0, 0);
+    }
     if (job) {
       setJobState(job);
     } else {
@@ -19,7 +21,7 @@ const ResultsPage = () => {
   };
 
   const renderJobListing = () => {
-    if (toggleState === true) {
+    if (toggleState === true && window.innerWidth < 1000) {
       return (
         <JobListing job={jobState} openJobDescription={openJobDescription} />
       );
@@ -27,7 +29,7 @@ const ResultsPage = () => {
       return (
         <Fragment>
           <Search />
-          <JobList openJobDescription={openJobDescription} />
+          <JobList openJobDescription={openJobDescription} job={jobState} />
         </Fragment>
       );
     }

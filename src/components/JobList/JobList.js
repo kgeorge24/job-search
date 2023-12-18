@@ -4,6 +4,7 @@ import JobItem from "../JobItem/JobItem";
 import styles from "./JobList.module.css";
 import Filter from "../Filter/Filter";
 import spinner from "../../assets/spinner-2.gif";
+import JobListing from "../JobListing/JobListing";
 
 const JobList = (props) => {
   const [resultsState, setResultsState] = useState({});
@@ -18,6 +19,7 @@ const JobList = (props) => {
   const fetchFromAPI = async (query) => {
     const response = await fetch(`/keyword-search/${query}`);
     const data = await response.json();
+    console.log(data);
     if (data.jobs_results) {
       setResultsState(data.jobs_results);
       setChipsState(data.chips);
@@ -32,7 +34,7 @@ const JobList = (props) => {
     const pathArray = window.location.pathname.split("/");
 
     let newChips = [];
-    pathArray.map((path) => {
+    return pathArray.map((path) => {
       if (pathArray.indexOf(path) > 3) {
         newChips.push(path);
       }
@@ -114,8 +116,17 @@ const JobList = (props) => {
         clickHandler={clickHandler}
         toggleState={toggleState}
       />
-      {returnJobItems()}
-      {resultsState.length > 1 ? renderSeeMoreButton() : null}
+      <div className={styles["job-item-container"]}>
+        <div>
+          {returnJobItems()}
+          {resultsState.length > 1 ? renderSeeMoreButton() : null}
+        </div>
+        <div>
+          {resultsState.length > 1 && window.innerWidth >= 1000 ? (
+            <JobListing job={props.job} firstJob={resultsState[0]} />
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 };

@@ -27,3 +27,53 @@
     margin-top: -28px;
     width: 70px;
 }
+
+.job-item-container > div:first-of-type{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.job-item-container > div:last-of-type{
+    display: none;
+}
+
+@media only screen and (min-width: 1000px) {
+    .joblist {
+        /* border: 2px solid black; */
+        align-items: baseline;
+        padding-bottom: 0;
+    }
+
+    .job-item-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 70vh;
+    }
+    
+    .job-item-container > div:first-of-type{
+        width: 25%;
+        min-width: 420px;
+        overflow: scroll;
+        padding-bottom: 40px;
+        /* border: 2px solid black; */
+    }
+    
+    .job-item-container > div:last-of-type{
+        padding: 20px;
+        display: block;
+        overflow: scroll;
+        width: 60%;
+    }
+
+    .seemore {
+        padding: 20px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

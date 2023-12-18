@@ -5,6 +5,7 @@ import "./App.css";
 
 function App() {
   console.log("The Entire App Rerendered!");
+
   return (
     <BrowserRouter>
       <Routes>

@@ -17,7 +17,7 @@ const Option = (props) => {
       ]);
       setToggleState(true);
     }
-  }, [chips, props.param, option.value]);
+  }, [chips, props.param, option.value, page, props]);
 
   const clickHandler = () => {
     if (toggleState) {

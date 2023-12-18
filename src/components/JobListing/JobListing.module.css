@@ -133,3 +133,17 @@
     text-decoration: none;
     color: white;
 }
+
+@media only screen and (min-width: 1000px) {
+    .joblisting > .close {
+        display: none;
+    }
+
+    .joblisting > .header > div {
+        width: 25%;
+    }
+
+    .toggle {
+        margin-bottom: 0;
+    }
+}
