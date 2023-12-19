@@ -14,6 +14,8 @@ const FilterItem = (props) => {
             setSelectedChips={props.setSelectedChips}
           />
         );
+      } else {
+        return "";
       }
     });
   };
