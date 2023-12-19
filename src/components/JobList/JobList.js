@@ -17,7 +17,7 @@ const JobList = (props) => {
   const { chips } = useParams();
 
   const fetchFromAPI = async (query) => {
-    const response = await fetch(`/keyword-search/${query}`);
+    const response = await fetch(`https://job-search-backend.fly.dev/keyword-search/${query}`);
     const data = await response.json();
     console.log(data);
     if (data.jobs_results) {
