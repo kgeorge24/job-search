@@ -3,7 +3,7 @@ import styles from "./FilterItem.module.css";
 
 const FilterItem = (props) => {
   const renderOptions = () => {
-    return props.chip.options.forEach((option) => {
+    return props.chip.options.map((option) => {
       if (!option.text.includes("{")) {
         return (
           <Option
