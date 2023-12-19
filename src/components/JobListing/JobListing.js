@@ -24,7 +24,7 @@ const JobListing = (props) => {
   }, [job.job_id]);
 
   const fetchFromAPI = async (query) => {
-    const response = await fetch(`/job-search/${query}`);
+    const response = await fetch(`https://job-search-backend.fly.dev/job-search/${query}`);
     const data = await response.json();
     console.log(data);
     setResultsState(data);
