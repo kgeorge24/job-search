@@ -17,11 +17,13 @@ const JobList = (props) => {
   const { chips } = useParams();
 
   const fetchFromAPI = async (query) => {
-    const response = await fetch(`https://job-search-backend.fly.dev/keyword-search/${query}`);
+    const response = await fetch(
+      `https://job-search-backend.fly.dev/keyword-search/${query}`
+    );
     const data = await response.json();
-    console.log(data);
     if (data.jobs_results) {
       setResultsState(data.jobs_results);
+      console.log(data.chips);
       setChipsState(data.chips);
     } else {
       setResultsState({});
@@ -34,7 +36,7 @@ const JobList = (props) => {
     const pathArray = window.location.pathname.split("/");
 
     let newChips = [];
-     pathArray.forEach((path) => {
+    pathArray.forEach((path) => {
       if (pathArray.indexOf(path) > 3) {
         newChips.push(path);
       }
@@ -80,7 +82,9 @@ const JobList = (props) => {
       encodeURIComponent(pathArray[1]);
 
     async function getMoreJobItems() {
-      const response = await fetch(`/keyword-search/${newPath}`);
+      const response = await fetch(
+        `https://job-search-backend.fly.dev/keyword-search/${newPath}`
+      );
       const data = await response.json();
       setResultsState((prevState) => [...prevState, ...data.jobs_results]);
       setIsLoadingState(false);
@@ -108,6 +112,8 @@ const JobList = (props) => {
       </button>
     );
   };
+
+  console.log(chipsState);
 
   return (
     <div className={`${styles.joblist} ${toggleJobList()}`}>
