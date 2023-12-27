@@ -3,21 +3,21 @@ import styles from "./Option.module.css";
 import { useParams } from "react-router-dom";
 
 const Option = (props) => {
-  const option = props.option;
+  const {option, param, setSelectedChips} = props;
   const { chips, page } = useParams();
   const [toggleState, setToggleState] = useState(false);
 
   useEffect(() => {
     let path = window.location.pathname.split(`${page}/`);
 
-    if (path[1].includes(`${props.param}:${option.value}`)) {
-      props.setSelectedChips((prevState) => [
+    if (path[1].includes(`${param}:${option.value}`)) {
+      setSelectedChips((prevState) => [
         ...prevState,
-        `${props.param}:${option.value}`,
+        `${param}:${option.value}`,
       ]);
       setToggleState(true);
     }
-  }, [chips, props.param, option.value, page, props]);
+  }, [chips, param, option.value, page, setSelectedChips]);
 
   const clickHandler = () => {
     if (toggleState) {
