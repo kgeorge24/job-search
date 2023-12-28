@@ -128,7 +128,6 @@ const JobList = (props) => {
           ) : null}
         </div>
       </div>
-        <Footer />
     </div>
   );
 };

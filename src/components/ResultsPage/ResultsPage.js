@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import JobList from "../JobList/JobList";
 import Search from "../Search/Search";
 import JobListing from "../JobListing/JobListing";
+import Footer from "../Footer/Footer";
 
 const ResultsPage = () => {
   const [toggleState, setToggleState] = useState(false);

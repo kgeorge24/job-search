@@ -16,7 +16,7 @@ const JobListing = (props) => {
   } else {
     job = props.job;
   }
-  
+
   useEffect(() => {
     if (job.job_id) {
       fetchFromAPI(encodeURIComponent(job.job_id));
@@ -24,7 +24,9 @@ const JobListing = (props) => {
   }, [job.job_id]);
 
   const fetchFromAPI = async (query) => {
-    const response = await fetch(`https://job-search-backend.fly.dev/job-search/${query}`);
+    const response = await fetch(
+      `https://job-search-backend.fly.dev/job-search/${query}`
+    );
     const data = await response.json();
     setResultsState(data);
   };
@@ -46,7 +48,11 @@ const JobListing = (props) => {
   };
 
   const renderToggleStyle = () => {
-    return !seeMoreState ? styles.hide : null;
+    if (window.innerWidth >= 1000) {
+      return null;
+    } else {
+      return !seeMoreState ? styles.hide : null;
+    }
   };
 
   const renderModal = () => {
@@ -63,6 +69,7 @@ const JobListing = (props) => {
         });
       } else {
         console.log("No apply options", resultsState);
+        return <p>This job is no longer accepting applications.</p>;
       }
     };
 
@@ -73,6 +80,7 @@ const JobListing = (props) => {
     toggleState === false ? setToggleState(true) : setToggleState(false);
   };
 
+  console.log(job);
   return (
     <div className={styles.joblisting}>
       <div className={styles.close}>
@@ -83,12 +91,20 @@ const JobListing = (props) => {
         <h3>{job.title}</h3>
         <h4 className={styles.blue}>{job.company_name}</h4>
         <p>{job.location}</p>
+        <p>
+          {`${job.company_name} • ${job.location} `}
+          <span className={styles.gray}>
+            {job.detected_extensions.posted_at}
+          </span>
+        </p>
         <div>
           <button onClick={toggleApply}>Apply</button>
           <button>Save</button>
         </div>
       </div>
-      <ul className={styles.modal}>{renderModal()}</ul>
+      <ul className={toggleState ? styles.modal : styles.hide}>
+        {renderModal()}
+      </ul>
       <div className={`${styles.description} ${renderToggleStyle()}`}>
         <h4>Job description</h4>
         <p>{job.description}</p>

@@ -144,10 +144,91 @@
     }
 
     .joblisting > .header > div {
-        width: 25%;
+        width: 23%;
     }
 
     .toggle {
+        display: none;
         margin-bottom: 0;
+        background-color: transparent;
+    }
+
+    .joblisting > .header {
+        padding-left: 30px;
+        background-color: transparent;
+        align-items: baseline;
+    }
+
+    .joblisting > .header img {
+        display: none;
+    }
+
+    .joblisting > .header > h3 {
+        font-size: 24px;
+        text-transform: capitalize;
+        margin-bottom: 15px;
+    }
+
+    .joblisting > .header > h4, .joblisting > .header > p:first-of-type {
+        display: none;
+    }
+
+    .joblisting > .header > p, .gray {
+        font-size: 12px;
+    }
+
+    .description {
+        background-color: transparent;
+        padding-left: 30px;
+    }
+
+    .gray {
+        color: #667487;
+    }
+
+    .joblisting > .header > div > a, .joblisting > .header > div > button {
+        border: none;
+        width: 80px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+    }
+    
+    .joblisting > .header > div > button:first-of-type {
+        background-color: #4D8FBE;
+        color: white;
+    }
+    
+    .joblisting > .header > div > button {
+        background-color: white;
+        color: #4D8FBE;
+        border: 2px solid #4D8FBE;
+    }
+
+    .modal {
+        width: 95%;
+        margin-left: 2.5%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border: 1.6px solid rgb(226, 226, 226);
+        border-radius: 10px;
+    }
+    
+    .modal li {
+        width: 180px;
+        height: 30px;
+        margin: 5px;
+    }
+
+    .modal li a {
+        font-size: 12px;
+    }
+
+    .modal p {
+        font-size: 12px;
+        padding-left: 10px;
+        padding: 20px;
     }
 }
