@@ -4,13 +4,17 @@
 }
 
 .jobitem {
+    display: flex;
     background-color: #F8F8F8;
     border-radius: 10px;
     min-width: 370px;
     max-width: 370px;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 10px 20px;
     box-shadow: 0px 4px 5px rgba(195, 195, 195, 0.552);
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgb(226, 226, 226);
 }
 
 .blue {
@@ -21,18 +25,30 @@
     margin-bottom: 2px;
 }
 
-.jobitem > .jobitem-header > div img{
+.jobitem > img{
     width: 40px;
     height: 40px;
     object-fit: contain;
+    margin-right: 12px;
+}
+
+.jobitem > div {
+    /* border: 2px solid black; */
+    width: 100%;
+}
+
+.jobitem-header > div > h3 {
+    text-transform: capitalize;
 }
 
 .jobitem-header > div  {
-   display: flex;
+    display: flex;
    flex-direction: column;
    text-align: left;
    margin-bottom: 30px;
 }
+
+
 
 .jobitem-attributes {
     text-align: left;
@@ -44,6 +60,7 @@
     background-color: #4D8FBE;
     color: white;
     padding: 5px;
+    font-size: 14px;
 }
 
 .footer {
@@ -53,11 +70,20 @@
     font-size: 14px;
 }
 
+.footer > p {
+    font-size: 14px;
+}
+
 @media only screen and (min-width: 1000px) {
     .jobitem {
         background-color: transparent;
         box-shadow: none;
-        border-bottom: 1px solid rgb(226, 226, 226);
         border-radius: 0;
+        border-bottom: none;
+    }
+
+    .jobitem > div {
+        border-bottom: 1px solid rgb(226, 226, 226);
+        padding-bottom: 8px;
     }
 }
