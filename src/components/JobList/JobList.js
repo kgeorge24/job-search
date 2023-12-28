@@ -5,7 +5,6 @@ import styles from "./JobList.module.css";
 import Filter from "../Filter/Filter";
 import spinner from "../../assets/spinner-2.gif";
 import JobListing from "../JobListing/JobListing";
-import Footer from "../Footer/Footer";
 
 const JobList = (props) => {
   const [resultsState, setResultsState] = useState({});
@@ -128,7 +127,6 @@ const JobList = (props) => {
           ) : null}
         </div>
       </div>
-        <Footer />
     </div>
   );
 };
