@@ -23,6 +23,8 @@
 
 .jobitem > .jobitem-header > div img{
     width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
 
 .jobitem-header > div  {
@@ -49,4 +51,13 @@
     justify-content: space-between;
     align-items: center;
     font-size: 14px;
+}
+
+@media only screen and (min-width: 1000px) {
+    .jobitem {
+        background-color: transparent;
+        box-shadow: none;
+        border-bottom: 1px solid rgb(226, 226, 226);
+        border-radius: 0;
+    }
 }

@@ -55,18 +55,19 @@
     }
     
     .job-item-container > div:first-of-type{
-        width: 25%;
-        min-width: 420px;
+        width: auto;
         overflow: scroll;
         padding-bottom: 40px;
-        /* border: 2px solid black; */
+
     }
     
     .job-item-container > div:last-of-type{
-        padding: 20px;
+        /* padding: 20px; */
+        /* border: 2px solid black; */
         display: block;
         overflow: scroll;
         width: 60%;
+    
     }
 
     .seemore {

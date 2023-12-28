@@ -27,4 +27,5 @@
 .header > ul > li > a > img {
     object-fit: contain;
     width: 120px;
+    height: 29px;
 }

@@ -16,7 +16,7 @@ const JobListing = (props) => {
   } else {
     job = props.job;
   }
-  // debugger
+  
   useEffect(() => {
     if (job.job_id) {
       fetchFromAPI(encodeURIComponent(job.job_id));
@@ -26,7 +26,6 @@ const JobListing = (props) => {
   const fetchFromAPI = async (query) => {
     const response = await fetch(`https://job-search-backend.fly.dev/job-search/${query}`);
     const data = await response.json();
-    console.log(data);
     setResultsState(data);
   };
 

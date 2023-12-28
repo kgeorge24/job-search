@@ -5,6 +5,7 @@ import styles from "./JobList.module.css";
 import Filter from "../Filter/Filter";
 import spinner from "../../assets/spinner-2.gif";
 import JobListing from "../JobListing/JobListing";
+import Footer from "../Footer/Footer";
 
 const JobList = (props) => {
   const [resultsState, setResultsState] = useState({});
@@ -12,9 +13,7 @@ const JobList = (props) => {
   const [loadingResultsState, setLoadingResultsState] = useState(false);
   const [chipsState, setChipsState] = useState({});
   const [toggleState, setToggleState] = useState(false);
-  const { slug } = useParams();
-  const { page } = useParams();
-  const { chips } = useParams();
+  const { slug, page, chips } = useParams();
 
   const fetchFromAPI = async (query) => {
     const response = await fetch(
@@ -23,7 +22,6 @@ const JobList = (props) => {
     const data = await response.json();
     if (data.jobs_results) {
       setResultsState(data.jobs_results);
-      console.log(data.chips);
       setChipsState(data.chips);
     } else {
       setResultsState({});
@@ -89,7 +87,6 @@ const JobList = (props) => {
       setResultsState((prevState) => [...prevState, ...data.jobs_results]);
       setIsLoadingState(false);
     }
-
     getMoreJobItems();
   };
 
@@ -113,8 +110,6 @@ const JobList = (props) => {
     );
   };
 
-  console.log(chipsState);
-
   return (
     <div className={`${styles.joblist} ${toggleJobList()}`}>
       <Filter
@@ -133,6 +128,7 @@ const JobList = (props) => {
           ) : null}
         </div>
       </div>
+        <Footer />
     </div>
   );
 };
