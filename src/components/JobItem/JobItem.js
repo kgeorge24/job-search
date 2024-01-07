@@ -14,8 +14,6 @@ const JobItems = (props) => {
       : job.detected_extensions.salary;
   };
 
-  console.log(job)
-
   return (
     <button
       className={styles.button}

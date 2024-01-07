@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import SearchContextProvider from "./components/store/search-context";
+import DropdownContextProvider from "./components/store/dropdown-context";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -8,7 +9,9 @@ import reportWebVitals from "./reportWebVitals";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <SearchContextProvider>
-    <App />
+    <DropdownContextProvider>
+      <App />
+    </DropdownContextProvider>
   </SearchContextProvider>
 );
 

@@ -80,7 +80,6 @@ const JobListing = (props) => {
     toggleState === false ? setToggleState(true) : setToggleState(false);
   };
 
-  console.log(job);
   return (
     <div className={styles.joblisting}>
       <div className={styles.close}>
