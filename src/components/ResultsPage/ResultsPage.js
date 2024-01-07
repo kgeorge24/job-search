@@ -1,4 +1,5 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useContext } from "react";
+import { DropdownContext } from "../store/dropdown-context";
 import Header from "../Header/Header";
 import JobList from "../JobList/JobList";
 import Search from "../Search/Search";
@@ -7,6 +8,7 @@ import JobListing from "../JobListing/JobListing";
 const ResultsPage = () => {
   const [toggleState, setToggleState] = useState(false);
   const [jobState, setJobState] = useState({});
+  const drpdwnCTX = useContext(DropdownContext);
 
   const openJobDescription = (job) => {
     toggleState === false ? setToggleState(true) : setToggleState(false);
@@ -35,10 +37,22 @@ const ResultsPage = () => {
     }
   };
 
+  const closeFilterDropdown = (e) => {
+    let filterNodes = document.getElementsByClassName("dropdown-container");
+    let filterNodesArray = Object.values(filterNodes);
+    let isPresent = false;
+    filterNodesArray.map((filterNode) => {
+      return filterNode.contains(e.target) ? (isPresent = true) : null;
+    });
+    return isPresent ? null : drpdwnCTX.setIsActive();
+  };
+
   return (
     <Fragment>
-      <Header />
-      {renderJobListing()}
+      <div onClick={(e) => closeFilterDropdown(e)}>
+        <Header />
+        {renderJobListing()}
+      </div>
     </Fragment>
   );
 };

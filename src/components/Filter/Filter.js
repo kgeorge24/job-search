@@ -1,11 +1,15 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { useParams } from "react-router-dom";
+import { DropdownContext } from "../store/dropdown-context";
 import styles from "./Filter.module.css";
 import FilterItem from "../FilterItem/FilterItem";
+import Dropdown from "../Dropdown/Dropdown";
 
 const Filter = (props) => {
   const [selectedChips, setSelectedChips] = useState([]);
   const { chips, page } = useParams();
+
+  const drpdwnCTX = useContext(DropdownContext);
 
   const pageHandler = () => {
     const page = window.location.pathname.split("/");
@@ -19,6 +23,7 @@ const Filter = (props) => {
     }
   };
 
+  // Handles showing or hiding the filter screen for mobile view.
   const renderClassname = () => {
     return props.toggleState === false ? styles.hide : styles.modal;
   };
@@ -64,16 +69,42 @@ const Filter = (props) => {
     window.location.pathname = newPath;
   };
 
+  const renderDropdown = () => {
+    if (window.innerWidth >= 1000) {
+      if (JSON.stringify(props.chips) !== "{}") {
+        return props.chips.map((chip) => {
+          return (
+            <Dropdown
+              chip={chip}
+              showResultsHandler={showResultsHandler}
+              key={chip.type}
+              isActive={drpdwnCTX.isActive === props.chips.indexOf(chip)}
+              isActiveIndex={drpdwnCTX.isActive}
+              index={props.chips.indexOf(chip)}
+              selectedChips={selectedChips}
+              setSelectedChips={setSelectedChips}
+            />
+          );
+        });
+      }
+    } else {
+      return <button onClick={props.clickHandler}>Filter</button>;
+    }
+  };
+
   return (
     <Fragment>
       <div className={styles.filter}>
-        <button onClick={props.clickHandler}>Filter</button>
+        {renderDropdown()}
         <p>Page: {pageHandler()}</p>
+        {window.innerWidth >= 1000 ? (
+          <button onClick={clearFilter}>Reset</button>
+        ) : null}
       </div>
       {/* This is the Popup Window for Filters */}
       <div className={renderClassname()}>
         <button onClick={props.clickHandler}>Cancel</button>
-        <ul>{renderFilters()}</ul>
+        <ul>{window.innerWidth < 1000 ? renderFilters() : null}</ul>
         <div>
           <button onClick={showResultsHandler}>Show Results</button>
           <button onClick={clearFilter}>Clear Filters</button>
