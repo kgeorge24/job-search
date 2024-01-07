@@ -95,6 +95,7 @@ const Filter = (props) => {
   return (
     <Fragment>
       <div className={styles.filter}>
+        {window.innerWidth >= 1000 ? <h4>Filters</h4> : null}
         {renderDropdown()}
         <p>Page: {pageHandler()}</p>
         {window.innerWidth >= 1000 ? (
