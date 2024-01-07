@@ -16,6 +16,7 @@
     height: 50px;
     position: absolute;
     left: 14%;
+    
 }
 
 .search > div > div img {
@@ -66,8 +67,7 @@ input[type="search"]::-webkit-search-results-decoration {
         justify-content:center;
         width: 100%;
         margin-top: 0;
-        height: 150px;
-        /* border: 2px solid black; */
+        height: 110px;
     }
 
     .search > div {
@@ -76,14 +76,22 @@ input[type="search"]::-webkit-search-results-decoration {
         margin: 0px 10px;
     }
 
+    .search > div > a {
+        line-height: 40px;
+        font-size: 16px;
+    }
+
     .search > div:last-of-type {
-        /* border: 2px solid black; */
         width: 10%;
     }
 
     .search > div input {
         max-width: 600px;
         width: 100%;
+    }
+
+    .search > div > div, .search > div input, .search > div > a {
+        height: 40px;
     }
 
     .search > div:first-of-type > div {
