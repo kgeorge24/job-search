@@ -72,22 +72,25 @@ input[type="search"]::-webkit-search-results-decoration {
 
     .search > div {
         width: 33%;
+        /* min-width: 300px; */
         margin-bottom: 0;
         margin: 0px 10px;
+        /* border: 2px solid black; */
     }
 
     .search > div > a {
         line-height: 40px;
         font-size: 16px;
+        width: 110px;
     }
 
     .search > div:last-of-type {
-        width: 10%;
+        width: 7%;
     }
 
     .search > div input {
-        max-width: 600px;
         width: 100%;
+        min-width: 300px;
     }
 
     .search > div > div, .search > div input, .search > div > a {
@@ -95,11 +98,11 @@ input[type="search"]::-webkit-search-results-decoration {
     }
 
     .search > div:first-of-type > div {
-        left: 11.5%;
+        left: 13%;
     }
 
     .search > div:nth-child(2) > div {
-        left: 45.8%;
+        left: 46.8%;
     }
 }
     
