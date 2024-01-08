@@ -8,8 +8,15 @@ import styles from "./Search.module.css";
 const Search = () => {
   const searchCtx = useContext(SearchContext);
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log("hi");
+    if (searchCtx.jobTitle) {
+      window.location.href = `/results/${searchCtx.jobTitle}${searchCtx.location}/0/:`;
+    }
+  };
   return (
-    <form className={styles.search}>
+    <form className={styles.search} onSubmit={(e) => submitHandler(e)}>
       <div>
         <div>
           <img src={search} alt="" />
@@ -35,6 +42,7 @@ const Search = () => {
         />
       </div>
       <div>
+        <button type="submit">Submit</button>
         <Link to={`/results/${searchCtx.jobTitle}${searchCtx.location}/0/:`}>
           Search Jobs
         </Link>
