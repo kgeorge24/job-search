@@ -9,6 +9,11 @@
     justify-content: center;
     margin-bottom: 20px;
 }
+
+.search > div:last-of-type > button {
+    display: none;
+}
+
 .search > div > div {
     display: flex;
     flex-direction: column;
@@ -46,7 +51,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .search > div > a {
     background-color: #4D8FBE;
     border: none;
-    width: 177px;
+    width: 150px;
     height: 50px;
     border-radius: 10px;
     color: white;
@@ -88,6 +93,10 @@ input[type="search"]::-webkit-search-results-decoration {
         width: 7%;
     }
 
+    .search > div:last-of-type > button {
+        display: none;
+    }
+
     .search > div input {
         width: 100%;
         min-width: 300px;
@@ -102,7 +111,7 @@ input[type="search"]::-webkit-search-results-decoration {
     }
 
     .search > div:nth-child(2) > div {
-        left: 46.8%;
+        left: 47%;
     }
 }
     
