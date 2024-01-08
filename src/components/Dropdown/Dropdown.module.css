@@ -6,11 +6,18 @@
 }
 
 .dropdown > button {
+    display: flex;
+    align-items: center;
     background-color: transparent;
     border: 1px solid rgb(181, 181, 181);
     padding: 5px 10px;
     border-radius: 40px;
     font-size: 14px;
+}
+
+.dropdown > button > img {
+    width: 10px;
+    margin-left: 5px;
 }
 
 .dropdown > button:hover {

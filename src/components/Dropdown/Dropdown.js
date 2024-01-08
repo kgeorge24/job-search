@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styles from "../Dropdown/Dropdown.module.css";
 import DropdownOption from "./DropdownOption";
 import { DropdownContext } from "../store/dropdown-context";
+import downArrow from "../../assets/icons8-sort-down-30.png";
 
 const Dropdown = (props) => {
   const { chip } = props;
@@ -33,7 +34,10 @@ const Dropdown = (props) => {
   return (
     <div className="dropdown-container">
       <div className={styles.dropdown}>
-        <button onClick={clickHandler}>{chip.type}</button>
+        <button onClick={clickHandler}>
+          {chip.type}
+          <img src={downArrow} alt="" />
+        </button>
         <div className={props.isActive ? styles.show : styles.hide}>
           <form>{renderOptions()}</form>
           <div>
