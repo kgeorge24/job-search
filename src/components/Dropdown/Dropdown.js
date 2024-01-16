@@ -16,18 +16,15 @@ const Dropdown = (props) => {
 
   const renderOptions = () => {
     return chip.options.map((option) => {
-      if (option.text !== "All") {
-        return (
-          <DropdownOption
-            option={option}
-            key={option.text}
-            param={props.chip.param}
-            selectedChips={props.selectedChips}
-            setSelectedChips={props.setSelectedChips}
-          />
-        );
-      }
-      return null;
+      return option.text !== "All" ? (
+        <DropdownOption
+          option={option}
+          key={option.text}
+          param={props.chip.param}
+          selectedChips={props.selectedChips}
+          setSelectedChips={props.setSelectedChips}
+        />
+      ) : null;
     });
   };
 
