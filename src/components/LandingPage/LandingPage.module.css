@@ -2,21 +2,36 @@
 
 }
 
+.poster-section > .quote {
+    display: none;
+}
+
 
 @media only screen and (min-width: 1000px) {
     .landing-page {
-        /* border: 2px solid black; */
         display: flex;
         flex-direction: column;
         height: 100vh;
-        overflow: scroll;
     }
 
     .poster-section {
         display: flex;
         align-items: center;
-        /* border: 2px solid black; */
+        justify-content: center;
         height: 73%;
+    }
+    
+    .poster-section > .quote {
+        /* border: 2px solid black; */
+        display: block;
+        width: 40%;
+        padding: 1%;
+    }
+
+    .poster-section > .quote > p {
+        font-family: 'Oswald', sans-serif;
+        font-size: 52px;
+        color: #4D8FBE;
     }
 
     .footer {

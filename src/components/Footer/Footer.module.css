@@ -3,7 +3,7 @@
     background-color: #EAE9E9;
     width: 100%;
     padding: 10px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .footer > ul {
@@ -22,6 +22,7 @@
 .footer > ul > li > a {
     text-decoration: none;
     color: #4D8FBE;
+    font-size: 12px;
 }
 
 .footer p {
