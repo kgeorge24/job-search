@@ -11,7 +11,12 @@ const LandingPage = () => {
       <Header />
       <Search />
       <div className={styles["poster-section"]}>
-        <Login />
+        <div className={styles.quote}>
+          <p>
+            "Embrace the job journey, trust your potential, and believe in your
+            dream job. Success awaits!"
+          </p>
+        </div>
         <Poster />
       </div>
       <div className={styles.footer}>

@@ -6,16 +6,22 @@ const Footer = () => {
     <div className={styles.footer}>
       <ul>
         <li>
-          <a href="privacy">Privacy</a>
+          <a href="useragreement">About</a>
+        </li>
+        <li>
+          <a href="useragreement">User Agreement</a>
+        </li>
+        <li>
+          <a href="privacy">Privacy Policy</a>
         </li>
         <li>
           <a href="cookiepolicy">Cookie Policy</a>
         </li>
         <li>
-          <a href="termsofuse">Terms of use</a>
+          <a href="careers">Community Guidelines</a>
         </li>
         <li>
-          <a href="careers">Careers</a>
+          <a href="termsofuse">Terms of Use</a>
         </li>
         <li>
           <a href="rules">Job Posting Rules</a>

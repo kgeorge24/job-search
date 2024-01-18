@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../store/user-context";
 import styles from "./Login.module.css";
 
 const Login = () => {
   const [emailState, setEmailState] = useState("");
   const [passwordState, setPasswordState] = useState("");
+  const userCTX = useContext(UserContext);
 
   const changeHandler = (e) => {
     e.target.id === "email"
@@ -11,15 +13,12 @@ const Login = () => {
       : setPasswordState(e.target.value);
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-
-    console.log("Email: ", emailState);
-    console.log("Password: ", passwordState);
-  };
-
+  
   return (
-    <form className={styles.login} onSubmit={submitHandler}>
+    <form
+      className={styles.login}
+      onSubmit={(e) => userCTX.loginSubmit(e, emailState, passwordState)}
+    >
       <div className={styles["login-container"]}>
         <div className={styles.header}>
           <h4>Login</h4>
