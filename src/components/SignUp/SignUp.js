@@ -64,7 +64,7 @@ const SignUp = (props) => {
         <Fragment>
           <div>
             <form
-              onSubmit={() => userCTX.signupSubmit(emailState, passwordState)}
+              onSubmit={(e) => userCTX.signupSubmit(e, emailState, passwordState)}
             >
               <div>
                 <label>Email</label>
