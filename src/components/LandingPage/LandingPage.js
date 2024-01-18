@@ -2,7 +2,6 @@ import Header from "../Header/Header";
 import Search from "../Search/Search";
 import Poster from "../Poster/Poster";
 import Footer from "../Footer/Footer";
-import Login from "../Login/Login";
 import styles from "./LandingPage.module.css";
 
 const LandingPage = () => {
