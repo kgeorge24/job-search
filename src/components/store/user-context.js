@@ -18,7 +18,6 @@ const UserContextProvider = (props) => {
   const auth = getAuth();
 
   const loginSubmit = (e, email, password) => {
-    console.log("Logging In ");
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -36,13 +35,13 @@ const UserContextProvider = (props) => {
       });
   };
 
-  const signupSubmit = (email, password) => {
+  const signupSubmit = (e, email, password) => {
+    e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
-        localStorage.setItem("isLoggedIn", "1");
-        console.log(userCredential);
-        setUserState(userCredential.user);
+        sessionStorage.setItem("uid", userCredential.user.uid);
+        sessionStorage.setItem("userEmail", userCredential.user.email);
         window.location.pathname = "/";
         // ...
       })
