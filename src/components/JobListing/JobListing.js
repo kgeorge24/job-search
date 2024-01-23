@@ -130,7 +130,8 @@ const JobListing = (props) => {
     });
 
     if (saveJobChecker) {
-      setSaveJobSwitch(Math.random());
+      let randomFloat = Math.random();
+      setSaveJobSwitch(randomFloat);
       userCTX.saveJob(job, userSavedJobs);
     }
   };
