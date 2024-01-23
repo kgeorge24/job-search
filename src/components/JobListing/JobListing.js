@@ -120,7 +120,7 @@ const JobListing = (props) => {
         saveJobChecker = false;
         let newUserSavedJobs = userSavedJobs;
         delete newUserSavedJobs[`${value.uid}`];
-        setSaveJobSwitch(id);
+        setSaveJobSwitch(Math.random());
         remove(
           ref(
             db,
@@ -131,7 +131,7 @@ const JobListing = (props) => {
     });
 
     if (saveJobChecker) {
-      setSaveJobSwitch(id);
+      setSaveJobSwitch(Math.random());
       userCTX.saveJob(job, userSavedJobs);
     }
 
