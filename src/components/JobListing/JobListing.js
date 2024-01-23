@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useId } from "react";
 import { UserContext } from "../store/user-context";
 import { getDatabase, ref, remove, onValue } from "firebase/database";
 import styles from "./JobListing.module.css";
@@ -14,6 +14,7 @@ const JobListing = (props) => {
   const [resultsState, setResultsState] = useState({});
   const [userSavedJobs, setUserSavedJobs] = useState({});
   const [setSaveJobSwitch] = useState("");
+  const id = useId();
 
   const userCTX = useContext(UserContext);
   let job = "";
@@ -119,7 +120,7 @@ const JobListing = (props) => {
         saveJobChecker = false;
         let newUserSavedJobs = userSavedJobs;
         delete newUserSavedJobs[`${value.uid}`];
-        setSaveJobSwitch(Math.random());
+        setSaveJobSwitch(id);
         remove(
           ref(
             db,
@@ -130,8 +131,7 @@ const JobListing = (props) => {
     });
 
     if (saveJobChecker) {
-      let randomFloat = Math.random();
-      setSaveJobSwitch(randomFloat);
+      setSaveJobSwitch(id);
       userCTX.saveJob(job, userSavedJobs);
     }
   };
