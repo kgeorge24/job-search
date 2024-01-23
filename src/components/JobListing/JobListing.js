@@ -13,7 +13,7 @@ const JobListing = (props) => {
   const [seeMoreImage, setSeeMoreImage] = useState(downArrow);
   const [resultsState, setResultsState] = useState({});
   const [userSavedJobs, setUserSavedJobs] = useState({});
-  const [setSaveJobSwitch] = useState("");
+  const [saveJobSwitch, setSaveJobSwitch] = useState("");
   const id = useId();
 
   const userCTX = useContext(UserContext);
@@ -134,6 +134,8 @@ const JobListing = (props) => {
       setSaveJobSwitch(id);
       userCTX.saveJob(job, userSavedJobs);
     }
+
+    return saveJobSwitch;
   };
 
   return (
