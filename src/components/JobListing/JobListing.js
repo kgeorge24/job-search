@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, useId } from "react";
+import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../store/user-context";
 import { getDatabase, ref, remove, onValue } from "firebase/database";
 import styles from "./JobListing.module.css";
@@ -14,7 +14,6 @@ const JobListing = (props) => {
   const [resultsState, setResultsState] = useState({});
   const [userSavedJobs, setUserSavedJobs] = useState({});
   const [saveJobSwitch, setSaveJobSwitch] = useState("");
-  const id = useId();
 
   const userCTX = useContext(UserContext);
   let job = "";
