@@ -1,8 +1,10 @@
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../store/user-context";
+import { getDatabase, ref, remove, onValue } from "firebase/database";
 import styles from "./JobListing.module.css";
 import nologo from "../../assets/nologo.webp";
 import downArrow from "../../assets/download.png";
 import upArrow from "../../assets/upload.png";
-import { useEffect, useState } from "react";
 
 const JobListing = (props) => {
   const [toggleState, setToggleState] = useState(false);
@@ -10,6 +12,10 @@ const JobListing = (props) => {
   const [seeMoreTextState, setSeeMoreTextState] = useState("See More");
   const [seeMoreImage, setSeeMoreImage] = useState(downArrow);
   const [resultsState, setResultsState] = useState({});
+  const [userSavedJobs, setUserSavedJobs] = useState({});
+  const [setSaveJobSwitch] = useState("");
+
+  const userCTX = useContext(UserContext);
   let job = "";
   if (JSON.stringify(props.job) === "{}" && window.innerWidth > 1000) {
     job = props.firstJob;
@@ -21,6 +27,17 @@ const JobListing = (props) => {
     if (job.job_id) {
       fetchFromAPI(encodeURIComponent(job.job_id));
     }
+
+    const db = getDatabase();
+    const UsersSavedJobs = ref(
+      db,
+      "savedJobs/" + sessionStorage.getItem("uid")
+    );
+    onValue(UsersSavedJobs, (snapshot) => {
+      if (snapshot.val() !== null) {
+        setUserSavedJobs(snapshot.val());
+      }
+    });
   }, [job.job_id]);
 
   const fetchFromAPI = async (query) => {
@@ -80,6 +97,44 @@ const JobListing = (props) => {
     toggleState === false ? setToggleState(true) : setToggleState(false);
   };
 
+  const renderSaveState = () => {
+    let string = "Save";
+    if (userSavedJobs) {
+      let values = Object.values(userSavedJobs);
+      values.forEach((value) => {
+        if (job.job_id === value.jobId) {
+          string = "Saved";
+        }
+      });
+    }
+    return string;
+  };
+
+  const saveJobHandler = () => {
+    let values = Object.values(userSavedJobs);
+    let saveJobChecker = true;
+    const db = getDatabase();
+    values.forEach((value) => {
+      if (job.job_id === value.jobId) {
+        saveJobChecker = false;
+        let newUserSavedJobs = userSavedJobs;
+        delete newUserSavedJobs[`${value.uid}`];
+        setSaveJobSwitch(Math.random());
+        remove(
+          ref(
+            db,
+            "savedJobs/" + sessionStorage.getItem("uid") + "/" + value.uid
+          )
+        );
+      }
+    });
+
+    if (saveJobChecker) {
+      setSaveJobSwitch(Math.random());
+      userCTX.saveJob(job, userSavedJobs);
+    }
+  };
+
   return (
     <div className={styles.joblisting}>
       <div className={styles.close}>
@@ -98,7 +153,9 @@ const JobListing = (props) => {
         </p>
         <div>
           <button onClick={toggleApply}>Apply</button>
-          <button>Save</button>
+          {sessionStorage.getItem("uid") ? (
+            <button onClick={saveJobHandler}>{renderSaveState()}</button>
+          ) : null}
         </div>
       </div>
       <ul className={toggleState ? styles.modal : styles.hide}>

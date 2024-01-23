@@ -5,6 +5,8 @@ import signupStyles from "./SignUp.module.css";
 import loginStyles from "../Login/Login.module.css";
 
 const SignUp = (props) => {
+  const [firstNameState, setFirstNameState] = useState("");
+  const [lastNameState, setLastNameState] = useState("");
   const [emailState, setEmailState] = useState("");
   const [passwordState, setPasswordState] = useState("");
   const userCTX = useContext(UserContext);
@@ -14,6 +16,10 @@ const SignUp = (props) => {
       setEmailState(e.target.value);
     } else if (e.target.name === "password") {
       setPasswordState(e.target.value);
+    } else if (e.target.name === "firstname") {
+      setFirstNameState(e.target.value);
+    } else if (e.target.name === "lastname") {
+      setLastNameState(e.target.value);
     }
   };
 
@@ -64,8 +70,34 @@ const SignUp = (props) => {
         <Fragment>
           <div>
             <form
-              onSubmit={(e) => userCTX.signupSubmit(e, emailState, passwordState)}
+              onSubmit={(e) =>
+                userCTX.signupSubmit(
+                  e,
+                  firstNameState,
+                  lastNameState,
+                  emailState,
+                  passwordState
+                )
+              }
             >
+              <div>
+                <label>First Name</label>
+                <input
+                  type="text"
+                  value={firstNameState}
+                  name="firstname"
+                  onChange={(e) => changeHandler(e)}
+                />
+              </div>
+              <div>
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  value={lastNameState}
+                  name="lastname"
+                  onChange={(e) => changeHandler(e)}
+                />
+              </div>
               <div>
                 <label>Email</label>
                 <input
