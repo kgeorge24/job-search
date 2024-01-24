@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Input from "../reusableComponents/Input/Input";
 
 const DropdownOption = (props) => {
   const { option, param, setSelectedChips, selectedChips } = props;
@@ -22,7 +23,6 @@ const DropdownOption = (props) => {
   }, [chips, param, option.value, page, setSelectedChips, selectedChips]);
 
   const clickHandler = (e) => {
-
     if (!e.target.checked) {
       let index = props.selectedChips.indexOf(`${props.param}:${option.value}`);
       let newSelectedChipsArray = props.selectedChips;
@@ -41,7 +41,8 @@ const DropdownOption = (props) => {
   return (
     <Fragment>
       <div>
-        <input
+        <Input
+          className="checkbox"
           type="checkbox"
           id={option.text}
           name={option.value}
