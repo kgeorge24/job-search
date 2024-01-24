@@ -19,8 +19,8 @@
     flex-direction: column;
     justify-content: center;
     height: 50px;
-    position: absolute;
-    left: 14%;
+    position: sticky;
+    /* left: 12%; */
     
 }
 
@@ -30,16 +30,18 @@
     height: 20px;
 }
 
-.search > div input {
+/* .search > div input {
     border: 1px solid #C6C6C6;
     border-radius: 10px;
-    text-align: center;
+    text-align: left;
     height: 50px;
     width: 80%;
     box-shadow: 4px 4px 10px rgb(215, 215, 215);
     outline: 0;
     font-size: 16px;
-}
+    padding-left: 36px;
+} */
+
 
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
@@ -73,14 +75,12 @@ input[type="search"]::-webkit-search-results-decoration {
         width: 100%;
         margin-top: 0;
         height: 110px;
+        /* border: 2px solid black; */
     }
 
     .search > div {
-        width: 33%;
-        /* min-width: 300px; */
+        width: 340px;
         margin-bottom: 0;
-        margin: 0px 10px;
-        /* border: 2px solid black; */
     }
 
     .search > div > a {
@@ -90,7 +90,8 @@ input[type="search"]::-webkit-search-results-decoration {
     }
 
     .search > div:last-of-type {
-        width: 7%;
+        width: 140px;
+        min-width: 0;
     }
 
     .search > div:last-of-type > button {
@@ -98,7 +99,7 @@ input[type="search"]::-webkit-search-results-decoration {
     }
 
     .search > div input {
-        width: 100%;
+        width: 50%;
         min-width: 300px;
     }
 
@@ -107,11 +108,12 @@ input[type="search"]::-webkit-search-results-decoration {
     }
 
     .search > div:first-of-type > div {
-        left: 13%;
+        /* border: 2px solid black; */
+        /* left: 590px; */
     }
 
     .search > div:nth-child(2) > div {
-        left: 47%;
+        
     }
 }
     

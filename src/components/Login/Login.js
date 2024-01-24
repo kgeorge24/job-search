@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../store/user-context";
 import styles from "./Login.module.css";
+import Input from "../reusableComponents/Input/Input";
 
 const Login = () => {
   const [emailState, setEmailState] = useState("");
@@ -26,7 +27,7 @@ const Login = () => {
         </div>
         <div className={styles.input}>
           <label htmlFor="email">Email</label>
-          <input
+          <Input
             type="text"
             id="email"
             value={emailState}
@@ -35,7 +36,7 @@ const Login = () => {
         </div>
         <div className={styles.input}>
           <label htmlFor="password">Password</label>
-          <input
+          <Input
             type="password"
             id="password"
             value={passwordState}
@@ -46,7 +47,7 @@ const Login = () => {
           </div>
         </div>
         <div className={styles.submit}>
-          <input type="submit" value="Login" />
+          <Input type="submit" value="Login" />
           <p>
             Dont have an account? <a href="sign-up">Sign Up</a>
           </p>

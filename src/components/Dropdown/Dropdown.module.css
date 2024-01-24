@@ -60,12 +60,6 @@
     margin-bottom: 5px;
 }
 
-.show > form > div > input {
-    margin-right: 5px;
-    margin-top: 3px;
-    border-radius: 100px;
-}
-
 .show > div {
     display: flex;
     justify-content: flex-end;
