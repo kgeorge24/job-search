@@ -1,0 +1,30 @@
+.input-wrapper {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.input-wrapper > label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-wrapper > input {
+    padding-left: 20px;
+}
+
+.input-wrapper > div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.input-wrapper > p, .input-wrapper > p > a {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.input-wrapper > div > a {
+    color: #a8a8a8;
+    text-decoration: none;
+    font-size: 12px;
+}
