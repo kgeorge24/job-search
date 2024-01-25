@@ -4,7 +4,6 @@ import UserAccountForm from "../reusableComponents/ContainerPage/ContainerPage";
 import Form from "../reusableComponents/Form/Form";
 import Input from "../reusableComponents/Input/Input";
 import InputWrapper from "../reusableComponents/InputWrapper/InputWrapper";
-import styles from "./Login.module.css";
 
 const Login = (props) => {
   const [firstNameState, setFirstNameState] = useState("");
@@ -62,10 +61,7 @@ const Login = (props) => {
             <button type="submit">Login</button>
             <div>
               <p>
-                Dont have an account?{" "}
-                <a href="signup" className={styles.blue}>
-                  Sign Up
-                </a>
+                Dont have an account? <a href="signup">Sign Up</a>
               </p>
             </div>
           </Form>
@@ -132,27 +128,15 @@ const Login = (props) => {
               />
               <p>
                 By clicking Agree & Join, you agree to the FindJobs{" "}
-                <a className={styles.blue} href="user-agreement">
-                  User Agreement
-                </a>
-                ,{" "}
-                <a className={styles.blue} href="privacy-policy">
-                  Privacy Policy
-                </a>
-                , and{" "}
-                <a className={styles.blue} href="cookie-policy">
-                  Cookie Policy
-                </a>
-                .
+                <a href="user-agreement">User Agreement</a>,{" "}
+                <a href="privacy-policy">Privacy Policy</a>, and{" "}
+                <a href="cookie-policy">Cookie Policy</a>.
               </p>
             </InputWrapper>
             <button type="submit">Agree & Join</button>
             <div>
               <p>
-                Already on FindJobs?{" "}
-                <a className={styles.blue} href="/login">
-                  Sign in
-                </a>
+                Already on FindJobs? <a href="/login">Sign in</a>
               </p>
             </div>
           </Form>
