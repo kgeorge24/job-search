@@ -1,13 +1,11 @@
 .input {
-    border: 1px solid #C6C6C6;
-    border-radius: 10px;
+    border: 1px solid #c6c6c6;
+    border-radius: 5px;
     text-align: left;
     height: 50px;
-    width: 80%;
-    box-shadow: 4px 4px 6px rgba(215, 215, 215, 0.642);
+    width: 100%;
     outline: 0;
     font-size: 16px;
-
     padding-left: 36px;
 }
 
@@ -25,4 +23,10 @@
 .location-input {
     background: url(../../../assets/location.png) no-repeat 8px;
     background-size: 20px;
+}
+
+@media only screen and (min-width: 1000px) {
+    .input{
+        width: 100%;
+    }
 }

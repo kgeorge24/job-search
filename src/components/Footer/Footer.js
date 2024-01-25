@@ -3,7 +3,7 @@ import styles from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <div className={styles.footer}>
+    <footer className={styles.footer}>
       <ul>
         <li>
           <a href="useragreement">About</a>
@@ -28,7 +28,7 @@ const Footer = () => {
         </li>
       </ul>
       <p>FindJobs, Inc © 2023 All Rights Reserved</p>
-    </div>
+    </footer>
   );
 };
 
