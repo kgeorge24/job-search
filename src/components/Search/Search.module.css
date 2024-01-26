@@ -30,17 +30,9 @@
     height: 20px;
 }
 
-/* .search > div input {
-    border: 1px solid #C6C6C6;
-    border-radius: 10px;
-    text-align: left;
-    height: 50px;
+.search > div input {
     width: 80%;
-    box-shadow: 4px 4px 10px rgb(215, 215, 215);
-    outline: 0;
-    font-size: 16px;
-    padding-left: 36px;
-} */
+}
 
 
 input[type="search"]::-webkit-search-decoration,

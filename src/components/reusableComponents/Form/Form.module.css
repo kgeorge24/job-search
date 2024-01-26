@@ -38,15 +38,15 @@
     color: #4D8FBE;
 }
 
-:any-link {
+.form :any-link {
     text-decoration: none;
     color: #4D8FBE;
 }
 
-:any-link:hover {
+.form :any-link:hover {
     text-decoration: underline;
 }
 
-:any-link:visited {
+.form :any-link:visited {
    color: #551A8B;
 }
