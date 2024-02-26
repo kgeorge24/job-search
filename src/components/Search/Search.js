@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { SearchContext } from "../store/search-context";
 import styles from "./Search.module.css";
 import Input from "../reusableComponents/Input/Input";
 
 const Search = () => {
   const searchCtx = useContext(SearchContext);
-  const { slug, page, chips, jobId } = useParams();
-  const navigate = useNavigate()
+  const { chips } = useParams();
 
   const submitHandler = (e) => {
     e.preventDefault();

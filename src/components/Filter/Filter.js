@@ -9,7 +9,7 @@ import Dropdown from "../Dropdown/Dropdown";
 const Filter = (props) => {
   const [selectedChips, setSelectedChips] = useState([]);
   const [toggleState, setToggleState] = useState(false);
-  const { slug, chips, page, jobId } = useParams();
+  const { slug, chips, page } = useParams();
   const navigate = useNavigate();
   const drpdwnCTX = useContext(DropdownContext);
   const joblistCTX = useContext(JoblistContext);

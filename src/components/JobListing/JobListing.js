@@ -3,16 +3,15 @@ import { UserContext } from "../store/user-context";
 import { getDatabase, ref, remove, onValue } from "firebase/database";
 import styles from "./JobListing.module.css";
 import nologo from "../../assets/nologo.webp";
-import downArrow from "../../assets/download.png";
-import upArrow from "../../assets/upload.png";
+// import downArrow from "../../assets/download.png";
 import { useLocation, useParams } from "react-router-dom";
 import Header from "../Header/Header";
 
 const JobListing = (props) => {
   const [toggleState, setToggleState] = useState(false);
-  const [seeMoreState, setSeeMoreState] = useState(false);
-  const [seeMoreTextState, setSeeMoreTextState] = useState("See More");
-  const [seeMoreImage, setSeeMoreImage] = useState(downArrow);
+  const [seeMoreState] = useState(false);
+  // const [setSeeMoreTextState] = useState("See More");
+  // const [setSeeMoreImage] = useState(downArrow);
   const [resultsState, setResultsState] = useState({});
   const [userSavedJobs, setUserSavedJobs] = useState({});
   const [saveJobSwitch, setSaveJobSwitch] = useState("");
@@ -67,17 +66,17 @@ const JobListing = (props) => {
     return !job.thumbnail ? nologo : job.thumbnail;
   };
 
-  const toggleSeeMore = () => {
-    if (seeMoreState === false) {
-      setSeeMoreState(true);
-      setSeeMoreTextState("See Less");
-      setSeeMoreImage(upArrow);
-    } else {
-      setSeeMoreState(false);
-      setSeeMoreTextState("See More");
-      setSeeMoreImage(downArrow);
-    }
-  };
+  // const toggleSeeMore = () => {
+  //   if (seeMoreState === false) {
+  //     setSeeMoreState(true);
+  //     setSeeMoreTextState("See Less");
+  //     setSeeMoreImage(upArrow);
+  //   } else {
+  //     setSeeMoreState(false);
+  //     setSeeMoreTextState("See More");
+  //     setSeeMoreImage(downArrow);
+  //   }
+  // };
 
   const renderToggleStyle = () => {
     if (window.innerWidth >= 1000) {
