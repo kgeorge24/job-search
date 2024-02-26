@@ -1,10 +1,12 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, Fragment } from "react";
 import { UserContext } from "../store/user-context";
 import { getDatabase, ref, remove, onValue } from "firebase/database";
 import styles from "./JobListing.module.css";
 import nologo from "../../assets/nologo.webp";
 import downArrow from "../../assets/download.png";
 import upArrow from "../../assets/upload.png";
+import { useLocation, useParams } from "react-router-dom";
+import Header from "../Header/Header";
 
 const JobListing = (props) => {
   const [toggleState, setToggleState] = useState(false);
@@ -14,18 +16,30 @@ const JobListing = (props) => {
   const [resultsState, setResultsState] = useState({});
   const [userSavedJobs, setUserSavedJobs] = useState({});
   const [saveJobSwitch, setSaveJobSwitch] = useState("");
-
+  const { jobId } = useParams();
+  // const [switchState, setSwitchState] = useState(false);
   const userCTX = useContext(UserContext);
-  let job = "";
-  if (JSON.stringify(props.job) === "{}" && window.innerWidth > 1000) {
-    job = props.firstJob;
+  const location = useLocation();
+  let { job } = "";
+  if (window.innerWidth < 1000) {
+    if (!props.job && location.state) {
+      job = location.state;
+    } else if (!props.job && !location.state) {
+    } else {
+      job = props;
+    }
   } else {
     job = props.job;
   }
 
   useEffect(() => {
-    if (job.job_id) {
+    // let route = `/results/${slug}/${page}/${chips}/${jobId}`;
+    // navigate(route);
+    // getCurrentlySelectedJob();
+    if (job.job_id !== undefined) {
       fetchFromAPI(encodeURIComponent(job.job_id));
+    } else {
+      fetchFromAPI(encodeURIComponent(jobId));
     }
 
     const db = getDatabase();
@@ -38,9 +52,10 @@ const JobListing = (props) => {
         setUserSavedJobs(snapshot.val());
       }
     });
-  }, [job.job_id]);
+  }, [job.job_id, jobId]);
 
   const fetchFromAPI = async (query) => {
+    // debugger;
     const response = await fetch(
       `https://job-search-backend.fly.dev/job-search/${query}`
     );
@@ -85,7 +100,6 @@ const JobListing = (props) => {
           );
         });
       } else {
-        console.log("No apply options", resultsState);
         return <p>This job is no longer accepting applications.</p>;
       }
     };
@@ -138,42 +152,45 @@ const JobListing = (props) => {
   };
 
   return (
-    <div className={styles.joblisting}>
-      <div className={styles.close}>
-        <button onClick={props.openJobDescription}>Close</button>
-      </div>
-      <div className={styles.header}>
-        <img src={renderImg()} alt="" />
-        <h3>{job.title}</h3>
-        <h4 className={styles.blue}>{job.company_name}</h4>
-        <p>{job.location}</p>
-        <p>
-          {`${job.company_name} • ${job.location} `}
-          <span className={styles.gray}>
-            {job.detected_extensions.posted_at}
-          </span>
-        </p>
-        <div>
-          <button onClick={toggleApply}>Apply</button>
-          {sessionStorage.getItem("uid") ? (
-            <button onClick={saveJobHandler}>{renderSaveState()}</button>
-          ) : null}
+    <Fragment>
+      {window.innerWidth < 1000 ? <Header /> : null}
+      <div className={styles.joblisting}>
+        {/* <div className={styles.close}>
+          <button onClick={props.openJobDescription}>Close</button>
+        </div> */}
+        <div className={styles.header}>
+          <img src={renderImg()} alt="" />
+          <h3>{job.title}</h3>
+          <h4 className={styles.blue}>{job.company_name}</h4>
+          <p>{job.location}</p>
+          <p>
+            {`${job.company_name} • ${job.location} `}
+            <span className={styles.gray}>
+              {/* {job.detected_extensions.posted_at} */}
+            </span>
+          </p>
+          <div>
+            <button onClick={toggleApply}>Apply</button>
+            {sessionStorage.getItem("uid") ? (
+              <button onClick={saveJobHandler}>{renderSaveState()}</button>
+            ) : null}
+          </div>
         </div>
+        <ul className={toggleState ? styles.modal : styles.hide}>
+          {renderModal()}
+        </ul>
+        <div className={`${styles.description} ${renderToggleStyle()}`}>
+          <h4>Job description</h4>
+          <p>{job.description}</p>
+        </div>
+        {/* <div className={styles.toggle}>
+          <button onClick={toggleSeeMore}>
+            {seeMoreTextState}
+            <img src={seeMoreImage} alt="" />
+          </button>
+        </div> */}
       </div>
-      <ul className={toggleState ? styles.modal : styles.hide}>
-        {renderModal()}
-      </ul>
-      <div className={`${styles.description} ${renderToggleStyle()}`}>
-        <h4>Job description</h4>
-        <p>{job.description}</p>
-      </div>
-      <div className={styles.toggle}>
-        <button onClick={toggleSeeMore}>
-          {seeMoreTextState}
-          <img src={seeMoreImage} alt="" />
-        </button>
-      </div>
-    </div>
+    </Fragment>
   );
 };
 

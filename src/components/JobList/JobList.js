@@ -46,7 +46,7 @@ const JobList = (props) => {
         fetchFromAPI(search);
       }
     }
-  }, [slug, page, chips]);
+  }, [slug, page]);
 
   const returnJobItems = () => {
     if (loadingResultsState === true) {
@@ -121,11 +121,11 @@ const JobList = (props) => {
           {returnJobItems()}
           {resultsState.length > 1 ? renderSeeMoreButton() : null}
         </div>
-        <div>
+        {/* <div>
           {resultsState.length > 1 && window.innerWidth >= 1000 ? (
             <JobListing job={props.job} firstJob={resultsState[0]} />
           ) : null}
-        </div>
+        </div> */}
       </div>
     </div>
   );

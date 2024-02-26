@@ -1,0 +1,44 @@
+.joblist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inria Sans', sans-serif;
+    padding-bottom: 70px;
+    min-width: 375px;
+}
+
+.seemore {
+    border: none;
+    border-radius: 10px;
+    background-color: #4D8FBE;
+    color: white;
+    font-size: 16px;
+    height: 50px;
+    width: 177px;
+    margin-top: 20px;
+}
+
+.loading > img {
+    margin-top: -10px;
+    width: 70px;
+}
+
+
+
+@media only screen and (min-width: 1000px) {
+    .joblist {
+        /* border: 2px solid black; */
+        height: 800px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+ 
+
+    .seemore {
+        padding: 10px;
+        width: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

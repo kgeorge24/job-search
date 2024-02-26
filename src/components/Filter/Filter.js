@@ -1,15 +1,38 @@
 import { Fragment, useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { DropdownContext } from "../store/dropdown-context";
+import { JoblistContext } from "../store/joblist-context";
 import styles from "./Filter.module.css";
 import FilterItem from "../FilterItem/FilterItem";
 import Dropdown from "../Dropdown/Dropdown";
 
 const Filter = (props) => {
   const [selectedChips, setSelectedChips] = useState([]);
-  const { chips, page } = useParams();
-
+  const [toggleState, setToggleState] = useState(false);
+  const { slug, chips, page, jobId } = useParams();
+  const navigate = useNavigate();
   const drpdwnCTX = useContext(DropdownContext);
+  const joblistCTX = useContext(JoblistContext);
+
+  // useEffect(() => {
+  //   setLoadingResultsState(true);
+  //   const pathArray = window.location.pathname.split("/");
+
+  //   let newChips = [];
+  //   pathArray.forEach((path) => {
+  //     if (pathArray.indexOf(path) > 3) {
+  //       newChips.push(path);
+  //     }
+  //   });
+  //   let readyChips = newChips.join("/");
+  //   localStorage.setItem("page", page);
+  //   if (slug) {
+  //     if (slug.length > 4) {
+  //       let search = `${slug}/${page}/${encodeURIComponent(readyChips)}`;
+  //       fetchFromAPI(search);
+  //     }
+  //   }
+  // }, [slug, page, chips]);
 
   const pageHandler = () => {
     const page = window.location.pathname.split("/");
@@ -25,12 +48,16 @@ const Filter = (props) => {
 
   // Handles showing or hiding the filter screen for mobile view.
   const renderClassname = () => {
-    return props.toggleState === false ? styles.hide : styles.modal;
+    return toggleState === false ? styles.hide : styles.modal;
+  };
+
+  const clickHandler = () => {
+    toggleState === false ? setToggleState(true) : setToggleState(false);
   };
 
   const renderFilters = () => {
-    if (JSON.stringify(props.chips) !== "{}") {
-      return props.chips.map((chip) => {
+    if (JSON.stringify(joblistCTX.chipsState) !== "{}") {
+      return joblistCTX.chipsState.map((chip) => {
         return (
           <FilterItem
             chip={chip}
@@ -46,41 +73,38 @@ const Filter = (props) => {
   const showResultsHandler = () => {
     let path = window.location.pathname.split(chips);
     let chipsString = "";
-
     if (selectedChips.length > 0) {
       selectedChips.map((chip) => {
-        return (chipsString += `${chip},`);
+        return (chipsString += `${encodeURIComponent(chip)},`);
       });
-      path[1] = chipsString;
-      path = path[0] + path[1];
+      path = `results/${slug}/${page}/${chipsString}`;
       window.location.pathname = path;
     } else {
-      path[1] = ":";
-      path = path[0] + path[1];
+      path = `results/${slug}/${page}/${chips}`;
       window.location.pathname = path;
     }
   };
 
   const clearFilter = () => {
-    let pathArray = window.location.pathname.split(`/${page}/`);
-    let newPath = "";
-    pathArray.pop();
-    newPath = `${pathArray[0]}/${page}/:`;
-    window.location.pathname = newPath;
+    let path = `/results/${slug}/${page}/:`;
+    window.location.pathname = path;
+    navigate(path);
   };
 
   const renderDropdown = () => {
     if (window.innerWidth >= 1000) {
-      if (JSON.stringify(props.chips) !== "{}") {
-        return props.chips.map((chip) => {
+      if (JSON.stringify(joblistCTX.chipsState) !== "{}") {
+        return joblistCTX.chipsState.map((chip) => {
           return (
             <Dropdown
               chip={chip}
               showResultsHandler={showResultsHandler}
               key={chip.type}
-              isActive={drpdwnCTX.isActive === props.chips.indexOf(chip)}
+              isActive={
+                drpdwnCTX.isActive === joblistCTX.chipsState.indexOf(chip)
+              }
               isActiveIndex={drpdwnCTX.isActive}
-              index={props.chips.indexOf(chip)}
+              index={joblistCTX.chipsState.indexOf(chip)}
               selectedChips={selectedChips}
               setSelectedChips={setSelectedChips}
             />
@@ -88,7 +112,7 @@ const Filter = (props) => {
         });
       }
     } else {
-      return <button onClick={props.clickHandler}>Filter</button>;
+      return <button onClick={clickHandler}>Filter</button>;
     }
   };
 
@@ -104,7 +128,7 @@ const Filter = (props) => {
       </div>
       {/* This is the Popup Window for Filters */}
       <div className={renderClassname()}>
-        <button onClick={props.clickHandler}>Cancel</button>
+        <button onClick={clickHandler}>Cancel</button>
         <ul>{window.innerWidth < 1000 ? renderFilters() : null}</ul>
         <div>
           <button onClick={showResultsHandler}>Show Results</button>

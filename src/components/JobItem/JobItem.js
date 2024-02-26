@@ -1,8 +1,11 @@
+import { useParams, useNavigate } from "react-router-dom";
 import styles from "./JobItem.module.css";
 import nologo from "../../assets/nologo.webp";
 
 const JobItems = (props) => {
   const { job } = props;
+  const { slug, page, chips } = useParams();
+  const navigate = useNavigate();
 
   const renderImg = () => {
     return !job.thumbnail ? nologo : job.thumbnail;
@@ -14,11 +17,16 @@ const JobItems = (props) => {
       : job.detected_extensions.salary;
   };
 
+  const loadJobListing = (job) => {
+    sessionStorage.setItem("selectedJob", JSON.stringify(job));
+    let route = `/results/${slug}/${page}/${chips}/${encodeURIComponent(
+      job.job_id
+    )}`;
+    navigate(route, { state: job });
+  };
+
   return (
-    <button
-      className={styles.button}
-      onClick={() => props.openJobDescription(job)}
-    >
+    <button className={styles.button} onClick={() => loadJobListing(job)}>
       <div className={styles.jobitem}>
         <img src={renderImg()} alt="" />
         <div>
