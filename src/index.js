@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import SearchContextProvider from "./components/store/search-context";
 import DropdownContextProvider from "./components/store/dropdown-context";
 import UserContextProvider from "./components/store/user-context";
+import JoblistContextProvider from "./components/store/joblist-context";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -35,9 +36,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <UserContextProvider>
     <SearchContextProvider>
-      <DropdownContextProvider>
-        <App />
-      </DropdownContextProvider>
+      <JoblistContextProvider>
+        <DropdownContextProvider>
+          <App />
+        </DropdownContextProvider>
+      </JoblistContextProvider>
     </SearchContextProvider>
   </UserContextProvider>
 );

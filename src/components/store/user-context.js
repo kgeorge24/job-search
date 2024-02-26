@@ -23,7 +23,8 @@ const UserContextProvider = (props) => {
 
   // Submit functions for User Auth
   const loginSubmit = (e, email, password) => {
-    e.preventDefault();
+    e.preventDefault()
+    console.log("things happening");
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in

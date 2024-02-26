@@ -11,7 +11,7 @@ const DropdownOption = (props) => {
     let path = window.location.pathname.split(`${page}/`);
 
     if (
-      path[1].includes(`${param}:${option.value}`) &&
+      path[1].includes(encodeURIComponent(`${param}:${option.value}`)) &&
       !selectedChips.includes(`${param}:${option.value}`)
     ) {
       setSelectedChips((prevState) => [

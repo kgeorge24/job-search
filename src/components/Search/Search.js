@@ -1,17 +1,22 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { SearchContext } from "../store/search-context";
 import styles from "./Search.module.css";
 import Input from "../reusableComponents/Input/Input";
 
 const Search = () => {
   const searchCtx = useContext(SearchContext);
+  const { slug, page, chips, jobId } = useParams();
+  const navigate = useNavigate()
 
   const submitHandler = (e) => {
     e.preventDefault();
     console.log("hi");
     if (searchCtx.jobTitle) {
-      window.location.href = `/results/${searchCtx.jobTitle}${searchCtx.location}/0/:`;
+      let route = `/results/${searchCtx.jobTitle}${searchCtx.location}/0/${
+        chips ? chips : ":"
+      }`;
+      window.location.pathname = route;
     }
   };
 
@@ -40,10 +45,7 @@ const Search = () => {
         />
       </div>
       <div>
-        <button type="submit">Submit</button>
-        <Link to={`/results/${searchCtx.jobTitle}${searchCtx.location}/0/:`}>
-          Search Jobs
-        </Link>
+        <button type="submit">Search Jobs</button>
       </div>
     </form>
   );

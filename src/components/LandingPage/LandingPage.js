@@ -5,6 +5,7 @@ import Footer from "../Footer/Footer";
 import styles from "./LandingPage.module.css";
 
 const LandingPage = () => {
+  sessionStorage.removeItem("selectedJob");
   return (
     <div className={styles["landing-page"]}>
       <Header />

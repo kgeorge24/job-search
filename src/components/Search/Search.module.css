@@ -11,7 +11,7 @@
 }
 
 .search > div:last-of-type > button {
-    display: none;
+    /* display: none; */
 }
 
 .search > div > div {
@@ -42,7 +42,7 @@ input[type="search"]::-webkit-search-results-decoration {
     display: none; 
 }
 
-.search > div > a {
+.search > div > button {
     background-color: #4D8FBE;
     border: none;
     width: 150px;
@@ -75,7 +75,7 @@ input[type="search"]::-webkit-search-results-decoration {
         margin-bottom: 0;
     }
 
-    .search > div > a {
+    .search > div > button {
         line-height: 40px;
         font-size: 16px;
         width: 110px;
@@ -87,7 +87,7 @@ input[type="search"]::-webkit-search-results-decoration {
     }
 
     .search > div:last-of-type > button {
-        display: none;
+        /* display: none; */
     }
 
     .search > div input {
@@ -95,7 +95,7 @@ input[type="search"]::-webkit-search-results-decoration {
         min-width: 300px;
     }
 
-    .search > div > div, .search > div input, .search > div > a {
+    .search > div > div, .search > div input, .search > div > button {
         height: 40px;
     }
 
